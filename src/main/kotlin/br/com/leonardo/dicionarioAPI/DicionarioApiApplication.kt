@@ -1,4 +1,4 @@
-package br.com.leonardo.DicionarioAPI
+package br.com.leonardo.dicionarioAPI
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

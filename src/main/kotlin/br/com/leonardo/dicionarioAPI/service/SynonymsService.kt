@@ -1,4 +1,4 @@
-package br.com.example.dicionarioAPI.service
+package br.com.leonardo.dicionarioAPI.service
 
 import org.springframework.stereotype.Service
 
