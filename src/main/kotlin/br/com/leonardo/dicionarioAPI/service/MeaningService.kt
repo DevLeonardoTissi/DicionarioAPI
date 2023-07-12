@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class MeaningService {
-
     fun searchMeaning(word: String): List<MeaningView> {
         val doc: Document = connectsWithTheUrlAndReturnsTheDocument(word)
         val meanings: MutableList<MeaningView> = mutableListOf()
