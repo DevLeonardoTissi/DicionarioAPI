@@ -1,18 +1,18 @@
 package br.com.leonardo.dicionarioAPI.service
 
-import br.com.leonardo.dicionarioAPI.controller.MeaningsResponse
+import br.com.leonardo.dicionarioAPI.dto.MeaningView
 import br.com.leonardo.dicionarioAPI.utils.connectsWithTheUrlAndReturnsTheDocument
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import org.springframework.stereotype.Service
 import org.jsoup.select.Elements
+import org.springframework.stereotype.Service
 
 @Service
 class MeaningService {
 
-    fun searchMeaning(word: String): List<MeaningsResponse> {
+    fun searchMeaning(word: String): List<MeaningView> {
         val doc: Document = connectsWithTheUrlAndReturnsTheDocument(word)
-        val meanings: MutableList<MeaningsResponse> = mutableListOf()
+        val meanings: MutableList<MeaningView> = mutableListOf()
         val elements: Elements = doc.select("p.significado span")
         elements.forEach { element: Element ->
             val text: String = element.text()
@@ -23,7 +23,7 @@ class MeaningService {
                 ) {
                     meanings[0].partOfSpeech = text
                 } else {
-                    meanings.add(MeaningsResponse(text, mutableListOf(), ""))
+                    meanings.add(MeaningView(text, mutableListOf(), ""))
                 }
             } else if (element.hasClass("etim")) {
                 meanings[meanings.size - 1].etymology = text

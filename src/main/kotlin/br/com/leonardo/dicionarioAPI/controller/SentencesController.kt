@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/sentences")
+@Suppress("unused")
 class SentencesController {
     @GetMapping("/{word}")
     fun searchSentences(@PathVariable word: String): String {
