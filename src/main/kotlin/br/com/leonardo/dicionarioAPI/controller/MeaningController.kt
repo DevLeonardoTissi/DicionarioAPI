@@ -13,13 +13,11 @@ class MeaningController(private val service: MeaningService) {
     fun searchMeaning(@PathVariable word: String): List<MeaningsResponse> {
         return service.searchMeaning(word)
     }
-
-
 }
 
 
 data class MeaningsResponse(
-    val partOfSpeech: String? = null,
-    val meanings: List<String>? = null,
-    val etymology: String? = null
+    var partOfSpeech: String? = null,
+    val meanings: MutableList<String>? = null,
+    var etymology: String? = null
 )
