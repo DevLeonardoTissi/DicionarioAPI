@@ -24,9 +24,6 @@ class GlobalExceptionHandler {
             message = exception.message,
             path = request.servletPath
         )
-
-
-
     }
 
     @ExceptionHandler(Exception::class)
