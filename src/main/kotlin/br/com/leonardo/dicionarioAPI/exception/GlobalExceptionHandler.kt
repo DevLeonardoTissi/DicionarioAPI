@@ -40,5 +40,4 @@ class GlobalExceptionHandler {
             path = request.servletPath
         )
     }
-
 }
