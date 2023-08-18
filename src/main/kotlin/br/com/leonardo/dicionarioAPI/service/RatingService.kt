@@ -1,13 +1,41 @@
 package br.com.leonardo.dicionarioAPI.service
 
 import br.com.leonardo.dicionarioAPI.dto.RatingForm
+import br.com.leonardo.dicionarioAPI.dto.RatingView
+import br.com.leonardo.dicionarioAPI.exception.NotFoundException
+import br.com.leonardo.dicionarioAPI.mapper.RatingFormMapper
+import br.com.leonardo.dicionarioAPI.mapper.RatingViewMapper
+import br.com.leonardo.dicionarioAPI.repository.RatingRepository
+import br.com.leonardo.dicionarioAPI.utils.NOT_FOUND_RATING_EXCEPTION_MESSAGE
 import org.springframework.stereotype.Service
+import java.util.stream.Collectors
 
 @Service
-class RatingService{
+class RatingService(
+    private val repository: RatingRepository,
+    private val ratingFormMapper: RatingFormMapper,
+    private val ratingViewMapper: RatingViewMapper
+) {
 
-    fun sendRating(
-         rating:RatingForm) {
-        println(rating.toString())
+    fun register(form: RatingForm): RatingView {
+        val rating = ratingFormMapper.map(form)
+        println(rating.id)
+        repository.save(rating)
+        return ratingViewMapper.map(rating)
+    }
+
+    fun searchAll(): List<RatingView> {
+        return repository.findAll().stream().map { rating ->
+            ratingViewMapper.map(rating)
+        }.collect(Collectors.toList())
+    }
+
+    fun searchById(id: Long): RatingView {
+        val rating = repository.findById(id).orElseThrow { NotFoundException(NOT_FOUND_RATING_EXCEPTION_MESSAGE) }
+        return ratingViewMapper.map(rating)
+    }
+
+    fun delete(id: Long) {
+        repository.deleteById(id)
     }
 }
