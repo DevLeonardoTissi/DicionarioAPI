@@ -7,8 +7,9 @@ import br.com.leonardo.dicionarioAPI.mapper.RatingFormMapper
 import br.com.leonardo.dicionarioAPI.mapper.RatingViewMapper
 import br.com.leonardo.dicionarioAPI.repository.RatingRepository
 import br.com.leonardo.dicionarioAPI.utils.NOT_FOUND_RATING_EXCEPTION_MESSAGE
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import java.util.stream.Collectors
 
 @Service
 class RatingService(
@@ -23,10 +24,15 @@ class RatingService(
         return ratingViewMapper.map(rating)
     }
 
-    fun searchAll(): List<RatingView> {
-        return repository.findAll().stream().map { rating ->
+    fun searchAll(userEmail: String?, pagination:Pageable): Page<RatingView> {
+        val ratings = if (userEmail == null) {
+            repository.findAll(pagination)
+        } else {
+            repository.searchByUserEmail(userEmail, pagination)
+        }
+        return ratings.map { rating ->
             ratingViewMapper.map(rating)
-        }.collect(Collectors.toList())
+        }
     }
 
     fun searchById(id: Long): RatingView {
