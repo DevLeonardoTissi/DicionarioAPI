@@ -11,7 +11,9 @@ class RatingViewMapper : Mapper<Rating, RatingView> {
             id = t.id,
             userEmail = alterCharacters(t.userEmail),
             rating = t.rating,
-            comment = t.comment
+            comment = t.comment,
+            createdAt = t.createdAt
+
         )
     }
 
