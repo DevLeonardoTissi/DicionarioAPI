@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class DicionarioApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<DicionarioApiApplication>(*args)
+    runApplication<DicionarioApiApplication>(*args)
 }

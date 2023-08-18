@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service
 class SyllablesService {
     fun searchSyllables(word: String): List<String> {
         val doc: Document = connectsWithTheUrlAndReturnsTheDocument(word)
-        val additionalElements : Elements = doc.select("p.adicional")
+        val additionalElements: Elements = doc.select("p.adicional")
         val syllableValue = additionalElements.select("b")
             .firstOrNull { it.previousSibling()?.toString()?.trim() == "Separação silábica:" }
             ?.text()?.split("-")
-         return syllableValue ?: emptyList()
+        return syllableValue ?: emptyList()
     }
 }

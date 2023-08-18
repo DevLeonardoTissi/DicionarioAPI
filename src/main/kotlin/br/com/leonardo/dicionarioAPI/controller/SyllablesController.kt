@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/syllables")
 @Suppress("unused")
-class SyllablesController(private val service:SyllablesService) {
+class SyllablesController(private val service: SyllablesService) {
     @GetMapping("/{word}")
-    fun searchSyllables(@PathVariable word:String):List<String>{
+    fun searchSyllables(@PathVariable word: String): List<String> {
         return service.searchSyllables(word)
     }
 }

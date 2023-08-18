@@ -18,7 +18,6 @@ fun returnWordWithoutSpecialCharacters(word: String): String {
         "ô" to "o",
         "ü" to "u",
         "à" to "a",
-
     )
 
     var wordWithOutSpecialCharacters = wordLowerCaseWithoutSpaces

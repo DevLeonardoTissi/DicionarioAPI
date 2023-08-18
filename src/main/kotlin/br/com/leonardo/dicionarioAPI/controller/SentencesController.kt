@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/sentences")
 @Suppress("unused")
-class SentencesController(private val service:SentencesService) {
+class SentencesController(private val service: SentencesService) {
     @GetMapping("/{word}")
     fun searchSentences(@PathVariable word: String): List<SentenceView> {
-       return service.searchSentences(word)
+        return service.searchSentences(word)
     }
 }

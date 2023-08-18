@@ -5,7 +5,7 @@ import br.com.leonardo.dicionarioAPI.model.Rating
 import org.springframework.stereotype.Component
 
 @Component
-class RatingFormMapper :Mapper<RatingForm, Rating> {
+class RatingFormMapper : Mapper<RatingForm, Rating> {
     override fun map(t: RatingForm): Rating {
         return Rating(
             userEmail = t.userEmail,

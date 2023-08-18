@@ -8,7 +8,7 @@ fun connectsWithTheUrlAndReturnsTheDocument(word: String): Document {
     try {
         val url = "$BASE_URL${returnWordWithoutSpecialCharacters(word)}"
         return Jsoup.connect(url).get()
-    } catch (e:Exception){
+    } catch (e: Exception) {
         throw NotFoundException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE)
     }
 }

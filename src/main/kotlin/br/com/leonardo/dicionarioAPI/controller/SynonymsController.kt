@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/synonyms")
 @Suppress("unused")
-class SynonymsController(private val service :SynonymsService) {
+class SynonymsController(private val service: SynonymsService) {
     @GetMapping("/{word}")
     fun searchSynonyms(@PathVariable word: String): List<String> {
         return service.searchSynonyms(word)

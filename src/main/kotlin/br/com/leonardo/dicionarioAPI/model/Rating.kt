@@ -8,7 +8,7 @@ import jakarta.persistence.Id
 @Entity
 data class Rating(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id :Long? = null,
+    val id: Long? = null,
     val userEmail: String,
     val rating: Float? = null,
     val comment: String? = null
