@@ -19,7 +19,6 @@ class RatingService(
 
     fun register(form: RatingForm): RatingView {
         val rating = ratingFormMapper.map(form)
-        println(rating.id)
         repository.save(rating)
         return ratingViewMapper.map(rating)
     }
