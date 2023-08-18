@@ -3,7 +3,10 @@ package br.com.leonardo.dicionarioAPI.controller
 import br.com.leonardo.dicionarioAPI.dto.RatingForm
 import br.com.leonardo.dicionarioAPI.dto.RatingView
 import br.com.leonardo.dicionarioAPI.service.RatingService
+import br.com.leonardo.dicionarioAPI.utils.RATINGS_CACHE_KEY
 import jakarta.validation.Valid
+import org.springframework.cache.annotation.CacheEvict
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -29,7 +32,8 @@ class RatingController(private val service: RatingService) {
 
     @PostMapping
     @Transactional
-    fun sendRating(
+    @CacheEvict(value = [RATINGS_CACHE_KEY], allEntries = true)
+    fun register(
         @RequestBody @Valid rating: RatingForm,
         uriBuilder: UriComponentsBuilder
     ): ResponseEntity<RatingView> {
@@ -39,6 +43,7 @@ class RatingController(private val service: RatingService) {
     }
 
     @GetMapping()
+    @Cacheable(RATINGS_CACHE_KEY)
     fun searchAll(
         @RequestParam(required = false) userEmail: String?,
         @PageableDefault(size = 5, sort = ["createdAt"], direction = Sort.Direction.DESC ) pagination: Pageable
@@ -50,6 +55,8 @@ class RatingController(private val service: RatingService) {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
+    @CacheEvict(value = [RATINGS_CACHE_KEY], allEntries = true)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable id: Long) {
         service.delete(id)
