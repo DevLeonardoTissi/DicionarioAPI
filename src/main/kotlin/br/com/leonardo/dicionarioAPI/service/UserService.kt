@@ -14,7 +14,6 @@ class UserService(private val repository: UserRepository): UserDetailsService {
 
     override fun loadUserByUsername(username: String?): UserDetails {
        val user = repository.findByEmail(username) ?: throw RuntimeException()
-        println(user)
        return UserDetail(user)
     }
 }
