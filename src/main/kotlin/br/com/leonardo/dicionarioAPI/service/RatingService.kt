@@ -24,7 +24,7 @@ class RatingService(
         return ratingViewMapper.map(rating)
     }
 
-    fun searchAll(userEmail: String?, pagination:Pageable): Page<RatingView> {
+    fun searchAll(userEmail: String?, pagination: Pageable): Page<RatingView> {
         val ratings = if (userEmail == null) {
             repository.findAll(pagination)
         } else {

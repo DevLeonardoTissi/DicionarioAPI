@@ -30,7 +30,7 @@ class SecurityConfiguration(
         return http
             .csrf { it.disable() }
             .authorizeHttpRequests {
-                it.requestMatchers(HttpMethod.DELETE,"/rating/{id}").hasAuthority("READ_WRITE")
+                it.requestMatchers(HttpMethod.DELETE, "/rating/{id}").hasAuthority("READ_WRITE")
                 it.requestMatchers(HttpMethod.POST, "/login")?.permitAll()
                 it.anyRequest().permitAll()
             }
