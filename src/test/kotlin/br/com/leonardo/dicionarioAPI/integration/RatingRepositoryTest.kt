@@ -70,5 +70,4 @@ class RatingRepositoryTest {
         assertThat(ratingsList).isEmpty()
     }
 
-
 }
