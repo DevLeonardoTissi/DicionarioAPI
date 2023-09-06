@@ -4,6 +4,7 @@ import br.com.leonardo.dicionarioAPI.dto.RatingForm
 import br.com.leonardo.dicionarioAPI.dto.RatingView
 import br.com.leonardo.dicionarioAPI.service.RatingService
 import br.com.leonardo.dicionarioAPI.utils.RATINGS_CACHE_KEY
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/rating")
 @Suppress("unused")
 class RatingController(private val service: RatingService) {
