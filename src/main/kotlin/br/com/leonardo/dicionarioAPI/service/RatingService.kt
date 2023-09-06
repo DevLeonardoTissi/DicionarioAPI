@@ -25,11 +25,10 @@ class RatingService(
     }
 
     fun searchAll(userEmail: String?, pagination: Pageable): Page<RatingView> {
-        val ratings = if (userEmail == null) {
-            repository.findAll(pagination)
-        } else {
+        val ratings = userEmail?.let {
             repository.searchByUserEmail(userEmail, pagination)
-        }
+        }?: repository.findAll(pagination)
+
         return ratings.map { rating ->
             ratingViewMapper.map(rating)
         }
