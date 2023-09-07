@@ -1,5 +1,6 @@
 package br.com.leonardo.dicionarioAPI.dto
 
+import java.io.Serializable
 import java.sql.Timestamp
 
 data class RatingView(
@@ -9,4 +10,4 @@ data class RatingView(
     val comment: String? = null,
     val createdAt: Timestamp? = null
 
-)
+):Serializable
