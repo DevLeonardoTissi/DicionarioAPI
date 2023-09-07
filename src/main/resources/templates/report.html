@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Ratings by User Email </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> UserEmail </th>
+                    <th> count </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${ratingsByUserEmail.empty}">
+                    <td colspan="2"> no ratings </td>
+                </tr>
+                <tr th:each="ratingsByUserEmail : ${ratingsByUserEmail}">
+                    <td th:text="${ratingsByUserEmail.userEmail}"></td>
+                    <td th:text="${ratingsByUserEmail.count}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

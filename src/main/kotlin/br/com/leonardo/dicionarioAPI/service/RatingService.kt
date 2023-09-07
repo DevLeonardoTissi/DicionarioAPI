@@ -1,5 +1,6 @@
 package br.com.leonardo.dicionarioAPI.service
 
+import br.com.leonardo.dicionarioAPI.dto.RatingByUserEmailDTO
 import br.com.leonardo.dicionarioAPI.dto.RatingForm
 import br.com.leonardo.dicionarioAPI.dto.RatingView
 import br.com.leonardo.dicionarioAPI.exception.NotFoundException
@@ -53,4 +54,10 @@ class RatingService(
     fun delete(id: Long) {
         repository.deleteById(id)
     }
+
+
+    fun report():List<RatingByUserEmailDTO>{
+        return repository.fetchRatingCountsByUserEmail()
+    }
+
 }

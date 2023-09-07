@@ -35,7 +35,7 @@ class RatingController(private val service: RatingService) {
     @GetMapping
     fun searchAll(
         @RequestParam(required = false) userEmail: String?,
-        @PageableDefault(size = 5, sort = ["createdAt"], direction = Sort.Direction.DESC) pagination: Pageable
+        @PageableDefault(size = 10, sort = ["createdAt"], direction = Sort.Direction.DESC) pagination: Pageable
     ): Page<RatingView> = service.searchAll(userEmail, pagination)
 
     @GetMapping("/{id}")
