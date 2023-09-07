@@ -18,13 +18,18 @@ import org.springframework.stereotype.Service
 class RatingService(
     private val repository: RatingRepository,
     private val ratingFormMapper: RatingFormMapper,
-    private val ratingViewMapper: RatingViewMapper
+    private val ratingViewMapper: RatingViewMapper,
+    private val emailService: EmailService
 ) {
 
     @CacheEvict(value = [RATINGS_CACHE_KEY], allEntries = true)
     fun register(form: RatingForm): RatingView {
         val rating = ratingFormMapper.map(form)
         repository.save(rating)
+
+        val author = rating.userEmail
+        emailService.notify(author)
+
         return ratingViewMapper.map(rating)
     }
 
