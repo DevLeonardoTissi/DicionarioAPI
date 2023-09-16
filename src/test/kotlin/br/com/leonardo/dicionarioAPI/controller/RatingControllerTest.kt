@@ -28,7 +28,6 @@ class RatingControllerTest : DatabaseContainerConfiguration() {
 
     @Autowired
     private lateinit var jwtUtil: JWTUtil
-
     companion object {
         private const val END_POINT_RATING = "/rating"
         private const val END_POINT_RATING_ID = END_POINT_RATING.plus("/%s")

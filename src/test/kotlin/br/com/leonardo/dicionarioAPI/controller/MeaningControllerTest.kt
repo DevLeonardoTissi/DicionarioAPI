@@ -33,7 +33,6 @@ class MeaningControllerTest {
             ).build()
     }
 
-
     @Test
     fun `should return code 400 when no meanings found`(){
         mockMvc.get(END_POINT_MEANING_NOT_EXISTENT).andExpect { status { is4xxClientError() } }
@@ -43,7 +42,6 @@ class MeaningControllerTest {
     fun `should return code 200 when there are meanings found`(){
         mockMvc.get(END_POINT_MEANING_EXISTENT).andExpect { status { is2xxSuccessful() } }
     }
-
 
 
 }
