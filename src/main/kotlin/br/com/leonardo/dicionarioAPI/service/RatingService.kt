@@ -34,7 +34,7 @@ class RatingService(
         return ratingViewMapper.map(rating)
     }
 
-    @Cacheable( RATINGS_CACHE_KEY)
+    @Cacheable(RATINGS_CACHE_KEY)
     fun searchAll(userEmail: String?, pagination: Pageable): Page<RatingView> {
         val ratings = userEmail?.let {
             repository.searchByUserEmail(userEmail, pagination)

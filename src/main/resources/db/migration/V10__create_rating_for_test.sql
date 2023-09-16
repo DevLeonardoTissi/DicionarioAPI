@@ -1,0 +1,1 @@
+INSERT INTO rating (id, user_email, rating, comment) VALUES (1, 'spring_test_rating@email.com', 5, 'Good')

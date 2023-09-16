@@ -33,6 +33,8 @@ class RatingServiceTest {
 
     }
 
+    val emailService: EmailService = mockk()
+
     val ratingFormMapper: RatingFormMapper = mockk()
     val ratingViewMapper: RatingViewMapper = mockk {
 
@@ -40,7 +42,7 @@ class RatingServiceTest {
 
     }
 
-    val ratingService = RatingService(repository, ratingFormMapper, ratingViewMapper)
+    val ratingService = RatingService(repository, ratingFormMapper, ratingViewMapper, emailService)
 
     val ratingSlot = slot<Rating>()
 
