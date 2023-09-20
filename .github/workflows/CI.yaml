@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  in-docker_test:
+    name: automated tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          cache: 'gradle'
+          distribution: 'temurin'
+
+      - name: Run tests
+        run: ./gradlew test
+
