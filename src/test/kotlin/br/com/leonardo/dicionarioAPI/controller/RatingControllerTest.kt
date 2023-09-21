@@ -1,7 +1,6 @@
 package br.com.leonardo.dicionarioAPI.controller
 
 import br.com.leonardo.dicionarioAPI.config.JWTUtil
-import br.com.leonardo.dicionarioAPI.configuration.DatabaseContainerConfiguration
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -22,7 +21,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
-class RatingControllerTest : DatabaseContainerConfiguration() {
+class RatingControllerTest {
 
     @Autowired
     private lateinit var webApplicationContext: WebApplicationContext
@@ -33,8 +32,8 @@ class RatingControllerTest : DatabaseContainerConfiguration() {
 
     @Autowired
     private lateinit var jwtUtil: JWTUtil
-    companion object {
 
+    companion object {
         @Container
         private val redisContainer = GenericContainer<Nothing>("redis:latest").apply {
             withExposedPorts(6379)
@@ -58,10 +57,6 @@ class RatingControllerTest : DatabaseContainerConfiguration() {
             registry.add("spring.data.redis.host", redisContainer::getHost)
             registry.add("spring.data.redis.port", redisContainer::getFirstMappedPort)
         }
-
-
-
-
 
         private const val END_POINT_RATING = "/rating"
         private const val END_POINT_RATING_ID = END_POINT_RATING.plus("/%s")
