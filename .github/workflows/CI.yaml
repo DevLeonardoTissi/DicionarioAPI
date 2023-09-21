@@ -19,14 +19,6 @@ jobs:
       
 
 
-
-      - name: Wait for MySQL to be ready
-        uses: xt0rted/wait-for@v3
-        with:
-          host: localhost
-          port: 3306
-
-
       - name: Set JDK
         uses: actions/setup-java@v3
         with:
