@@ -1,5 +1,6 @@
 package br.com.leonardo.dicionarioAPI.controller
 
+import br.com.leonardo.dicionarioAPI.configuration.DatabaseContainerConfiguration
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,9 +11,11 @@ import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
+import org.testcontainers.junit.jupiter.Testcontainers
 
+@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class MeaningControllerTest {
+class MeaningControllerTest : DatabaseContainerConfiguration() {
 
     @Autowired
     private lateinit var webApplicationContext: WebApplicationContext
@@ -34,12 +37,12 @@ class MeaningControllerTest {
     }
 
     @Test
-    fun `should return code 400 when no meanings found`(){
+    fun `should return code 400 when no meanings found`() {
         mockMvc.get(END_POINT_MEANING_NOT_EXISTENT).andExpect { status { is4xxClientError() } }
     }
 
     @Test
-    fun `should return code 200 when there are meanings found`(){
+    fun `should return code 200 when there are meanings found`() {
         mockMvc.get(END_POINT_MEANING_EXISTENT).andExpect { status { is2xxSuccessful() } }
     }
 
