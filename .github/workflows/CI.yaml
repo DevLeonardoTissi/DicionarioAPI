@@ -13,12 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup MySQL
-        run: |
-          docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=dictionary_api_database -e MYSQL_USER=spring_boot -e MYSQL_PASSWORD=Leonardodev@ -p 3306:3306 -d mysql:latest
-      
-
-
       - name: Set JDK
         uses: actions/setup-java@v3
         with:
