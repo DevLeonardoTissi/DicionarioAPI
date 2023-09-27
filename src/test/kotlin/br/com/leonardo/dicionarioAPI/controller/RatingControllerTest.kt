@@ -40,7 +40,7 @@ class RatingControllerTest {
         }
 
         @Container
-        private val mysqlContainer = MySQLContainer<Nothing>("mysql:8.0.28").apply {
+        private val mysqlContainer = MySQLContainer<Nothing>("mysql:latest").apply {
             withDatabaseName("testedb")
             withUsername("tester")
             withPassword("123456")
