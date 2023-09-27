@@ -27,7 +27,7 @@ services:
       - 6379:6379
 
   dictionary_api:
-    image: dictionary_api:1.0
+    image: leonardotissi/dictionary_api:1.0
     container_name: dictionary_api
     networks:
       - compose-bridge
