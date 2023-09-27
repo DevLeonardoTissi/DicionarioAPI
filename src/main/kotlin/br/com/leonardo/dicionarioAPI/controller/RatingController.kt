@@ -20,7 +20,6 @@ import org.springframework.web.util.UriComponentsBuilder
 @RequestMapping("/rating")
 @Suppress("unused")
 class RatingController(private val service: RatingService) {
-
     @PostMapping
     @Transactional
     fun register(

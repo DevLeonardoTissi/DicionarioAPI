@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 @RequestMapping("/rating/report")
 @Suppress("unused")
 class ReportController(private val ratingService: RatingService) {
-
     @GetMapping
     @Suppress("unused")
-    fun report(model:Model): String {
-        model.addAttribute("ratingsByUserEmail",ratingService.report())
+    fun report(model: Model): String {
+        model.addAttribute("ratingsByUserEmail", ratingService.report())
         return "report"
     }
 

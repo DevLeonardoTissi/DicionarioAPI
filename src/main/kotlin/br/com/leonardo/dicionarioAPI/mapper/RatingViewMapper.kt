@@ -18,7 +18,7 @@ class RatingViewMapper : Mapper<Rating, RatingView> {
     }
 
     private fun alterCharacters(userEmail: String): String {
-        val maskedPortion = "**********"
+        val maskedPortion = if (userEmail.length >= 10) "**********" else "*****"
         val visiblePortion = userEmail.substring(0, userEmail.length - 10)
         return "$visiblePortion$maskedPortion"
     }

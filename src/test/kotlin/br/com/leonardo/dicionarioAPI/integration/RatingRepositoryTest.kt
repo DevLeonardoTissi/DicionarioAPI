@@ -15,12 +15,11 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class RatingRepositoryTest:DatabaseContainerConfiguration() {
+class RatingRepositoryTest : DatabaseContainerConfiguration() {
 
     @Autowired
     private lateinit var ratingRepository: RatingRepository
     private val ratingTest = RatingTest.build()
-
 
     @Test
     fun `must add a rating in the database created in the temporary container and check its respective type`() {

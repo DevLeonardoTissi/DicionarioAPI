@@ -7,10 +7,10 @@ import org.testcontainers.junit.jupiter.Testcontainers
 
 @SpringBootTest
 @Testcontainers
-class DicionarioApiApplicationTests: DatabaseContainerConfiguration() {
+class DicionarioApiApplicationTests : DatabaseContainerConfiguration() {
 
-	@Test
-	fun contextLoads() {
-	}
+    @Test
+    fun contextLoads() {
+    }
 
 }

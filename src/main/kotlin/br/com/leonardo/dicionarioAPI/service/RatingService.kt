@@ -38,7 +38,7 @@ class RatingService(
     fun searchAll(userEmail: String?, pagination: Pageable): Page<RatingView> {
         val ratings = userEmail?.let {
             repository.searchByUserEmail(userEmail, pagination)
-        }?: repository.findAll(pagination)
+        } ?: repository.findAll(pagination)
 
         return ratings.map { rating ->
             ratingViewMapper.map(rating)
@@ -55,8 +55,7 @@ class RatingService(
         repository.deleteById(id)
     }
 
-
-    fun report():List<RatingByUserEmailDTO>{
+    fun report(): List<RatingByUserEmailDTO> {
         return repository.fetchRatingCountsByUserEmail()
     }
 

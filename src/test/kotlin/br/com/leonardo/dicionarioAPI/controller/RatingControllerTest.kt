@@ -46,7 +46,6 @@ class RatingControllerTest {
             withPassword("123456")
         }
 
-
         @JvmStatic
         @DynamicPropertySource
         fun properties(registry: DynamicPropertyRegistry) {
@@ -79,13 +78,11 @@ class RatingControllerTest {
         mockMvc.get(END_POINT_RATING_ID.format(1)).andExpect { status { is2xxSuccessful() } }
     }
 
-
     @Test
     @Order(2)
     fun `should return all ratings `() {
         mockMvc.get(END_POINT_RATING).andExpect { status { is2xxSuccessful() } }
     }
-
 
     @Test
     @Order(3)
@@ -99,7 +96,6 @@ class RatingControllerTest {
         mockMvc.get(END_POINT_RATING_ID.format(99)).andExpect { status { is4xxClientError() } }
     }
 
-
     @Test
     @Order(5)
     fun `should return code 200 when correct token`() {
@@ -107,7 +103,6 @@ class RatingControllerTest {
             headers { token?.let { this.setBearerAuth(it) } }
         }.andExpect { status { is2xxSuccessful() } }
     }
-
 
     private fun generateTokenForTest(): String? {
         val authorities = mutableListOf(br.com.leonardo.dicionarioAPI.model.Role(id = 1, "READ_WRITE"))

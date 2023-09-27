@@ -10,4 +10,4 @@ data class RatingView(
     val comment: String? = null,
     val createdAt: Timestamp? = null
 
-):Serializable
+) : Serializable

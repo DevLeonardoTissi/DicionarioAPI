@@ -36,7 +36,6 @@ class SynonymsControllerTest : DatabaseContainerConfiguration() {
             ).build()
     }
 
-
     @Test
     fun `should return code 400 when no synonyms found`() {
         mockMvc.get(END_POINT_SYNONYMS_NOT_EXISTENT).andExpect { status { is4xxClientError() } }

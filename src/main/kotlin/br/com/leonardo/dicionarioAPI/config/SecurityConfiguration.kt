@@ -22,8 +22,6 @@ class SecurityConfiguration(
     private val configuration: AuthenticationConfiguration,
     private val jwtUtil: JWTUtil
 ) {
-
-
     @Bean
     @Suppress("unused")
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
@@ -51,13 +49,11 @@ class SecurityConfiguration(
             .build()
     }
 
-
     @Bean
     @Suppress("unused")
     fun encoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
     }
-
 
 }
 

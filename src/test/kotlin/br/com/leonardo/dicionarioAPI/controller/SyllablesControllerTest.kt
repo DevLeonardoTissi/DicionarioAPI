@@ -36,7 +36,6 @@ class SyllablesControllerTest : DatabaseContainerConfiguration() {
             ).build()
     }
 
-
     @Test
     fun `should return code 400 when no syllabic separation found`() {
         mockMvc.get(END_POINT_SYLLABLES_NOT_EXISTENT).andExpect { status { is4xxClientError() } }

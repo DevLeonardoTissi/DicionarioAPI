@@ -13,17 +13,15 @@ import java.util.*
 @Component
 class JWTUtil(private val userService: UserService) {
 
-    private val expiration: Long = 60000
+    private val expirationTimeInMilliseconds: Long = 60000
 
     @Value("\${jwt.secret}")
     private lateinit var secret: String
-
-
     fun generateToken(username: String, authorities: MutableCollection<out GrantedAuthority>): String? {
         return Jwts.builder()
             .setSubject(username)
             .claim("role", authorities)
-            .setExpiration(Date(System.currentTimeMillis() + expiration))
+            .setExpiration(Date(System.currentTimeMillis() + expirationTimeInMilliseconds))
             .signWith(SignatureAlgorithm.HS512, secret.toByteArray())
             .compact()
     }

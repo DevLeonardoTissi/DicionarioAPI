@@ -15,15 +15,15 @@ abstract class DatabaseContainerConfiguration {
         }
 
         @Container
-        private val mysqlContainer = MySQLContainer<Nothing>("mysql:8.0.28").apply {
-            withDatabaseName("testedb")
+        private val mysqlContainer = MySQLContainer<Nothing>("mysql:latest").apply {
+            withDatabaseName("testerDb")
             withUsername("tester")
             withPassword("123456")
         }
 
-
         @JvmStatic
         @DynamicPropertySource
+        @Suppress("unused")
         fun properties(registry: DynamicPropertyRegistry) {
             registry.add("spring.datasource.url", mysqlContainer::getJdbcUrl)
             registry.add("spring.datasource.password", mysqlContainer::getPassword)

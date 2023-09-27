@@ -36,7 +36,6 @@ class SentencesControllerTest : DatabaseContainerConfiguration() {
             ).build()
     }
 
-
     @Test
     fun `should return code 400 when no sentences found`() {
         mockMvc.get(END_POINT_SENTENCES_NOT_EXISTENT).andExpect { status { is4xxClientError() } }
