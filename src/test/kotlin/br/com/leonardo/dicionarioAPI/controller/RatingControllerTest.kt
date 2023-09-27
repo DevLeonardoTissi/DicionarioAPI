@@ -106,7 +106,7 @@ class RatingControllerTest {
 
     private fun generateTokenForTest(): String? {
         val authorities = mutableListOf(br.com.leonardo.dicionarioAPI.model.Role(id = 1, "READ_WRITE"))
-        return jwtUtil.generateToken("leonardo_spring_boot@gmail.com", authorities = authorities)
+        return jwtUtil.generateToken("leonardo_spring_boot_api_test@email.com", authorities = authorities)
     }
 
 }
