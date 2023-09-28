@@ -41,4 +41,5 @@ class JWTUtil(private val userService: UserService) {
         val authorities = userService.loadUserByUsername(userName).authorities
         return UsernamePasswordAuthenticationToken(userName, null, authorities)
     }
+
 }
