@@ -115,8 +115,7 @@ Clique  <a href="/app/release/app-release.apk?raw=true">aqui</a> para acessar a 
 </br></br>
 
 <div align="center" style=" width: 100%; background-color: white; ">
-<img alt = "screenshot" width = "100%" src = "./readme_files/architecture.png
-">
+<img alt = "screenshot" width = "100%" src = "readme_files/architecture.png">
 </div>
 <br>
 
