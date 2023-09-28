@@ -61,7 +61,7 @@ Embora tenham ocorrido desafios e imprevistos durante o desenvolvimento, a perse
 
 </p>
 
-Clique  <a href="/app/release/app-release.apk?raw=true">aqui</a> para acessar a imagem da aplicação no Docker Hub.
+Clique  <a href="https://hub.docker.com/r/leonardotissi/dictionary_api">aqui</a> para acessar a imagem da aplicação no Docker Hub.
 
 ## Tecnologias usadas e bibliotecas de código aberto
 
