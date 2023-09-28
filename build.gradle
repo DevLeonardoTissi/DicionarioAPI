@@ -21,13 +21,16 @@ repositories {
 }
 
 dependencies {
+
+    // Jsoup
     def jsoup_version = "1.15.3"
     implementation "org.jsoup:jsoup:$jsoup_version"
+
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
 
 
-    //Spring boot starter
+    // Spring boot starter
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // Sprinng boot - Validation
