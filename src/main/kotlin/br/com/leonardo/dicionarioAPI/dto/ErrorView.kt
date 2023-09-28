@@ -8,5 +8,4 @@ data class ErrorView(
     val error: String,
     val message: String?,
     val path: String
-
 )
