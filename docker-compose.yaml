@@ -15,7 +15,7 @@ services:
     healthcheck:
       test: [ "CMD-SHELL", "/usr/bin/mysql --user=root --password=root --execute 'SHOW DATABASES;'" ]
       interval: 2s
-      timeout: 20s
+      timeout: 120s
       retries: 10
 
   redis-service:
